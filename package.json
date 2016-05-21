@@ -6,7 +6,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "4.13.x",
     "ghost": "^0.7.9",
     "cfenv": "1.0.x"
   },
