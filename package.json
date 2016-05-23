@@ -51,7 +51,7 @@
     "moment": "2.13.0",
     "morgan": "1.7.0",
     "multer": "1.1.0",
-    "nano": "^6.1.4",
+    "nano": "^6.2.0",
     "netjet": "1.1.0",
     "node-uuid": "1.4.7",
     "nodemailer": "0.7.1",
@@ -66,7 +66,7 @@
     "sqlite3": "3.1.4",
     "unidecode": "0.1.8",
     "validator": "5.2.0",
-    "when": "^3.7.3",
+    "when": "^3.7.7",
     "xml": "1.0.1"
   },
   "optionalDependencies": {
