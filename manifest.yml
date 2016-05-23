@@ -1,8 +1,19 @@
+---
+declared-services:
+  talent-manager-db:
+    label: cloudantNoSQLDB
+    plan: Shared
+  mysql-database:
+    label: mysql
+    plan: '100'
 applications:
 - path: .
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: Ghost
-  host: ghost
+  name: Ghost3
+  host: ghost3
   disk_quota: 1024M
+  services:
+    - talent-manager-db
+    - mysql-database #Identifier for MySQL Bound Service instance
