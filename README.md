@@ -1,116 +1,52 @@
-<a href="https://github.com/TryGhost/Ghost"><img src="https://cloud.githubusercontent.com/assets/120485/6622822/c4c639fe-c8e7-11e4-9e64-5bec06c8b4c3.png" alt="Ghost" /></a>
-<a href="https://travis-ci.org/TryGhost/Ghost"><img align="right" src="https://travis-ci.org/TryGhost/Ghost.svg?branch=master" alt="Build status" /></a>
+In this guide, I will guide you step by step on how to set up Ghost, one of the best open source blogging platform, on IBM's Bluemix.
 
-![Ghost Screenshot](https://cloud.githubusercontent.com/assets/120485/6626466/6dae46b2-c8ff-11e4-8c7c-8dd63b215f7b.jpg)
+First, you will need to create **Bluemix** account.
+You can start a free trial for 30 days. Once your trial is over, you are required to enter your credit card information, but you will not be charged as long as you remain within free-tier limit.
 
-![Ghost is a simple, powerful publishing platform that allows you to share your stories with the world.](https://cloud.githubusercontent.com/assets/120485/6626501/b2bb072c-c8ff-11e4-8e1a-2e78e68fd5c3.png)
+Feel free to use other NodeJS hosting, but this guide is specifically for **Bluemix**.
 
-The project is maintained by a non-profit organisation called the **Ghost Foundation**, along with an amazing group of independent [contributors](https://github.com/TryGhost/Ghost/contributors). We're trying to make publishing software that changes the shape of online journalism.
+To make your deployment process as easy as possible, I have created a github repo that contains all the code needed to get you started, simply click **Deploy to Bluemix** button below.
+> [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/bosung90/ghost-bluemix-deploy)
 
-- [Ghost.org](https://ghost.org)
-- [Latest Release](https://ghost.org/developers/)
-- [Support](http://support.ghost.org/)
-- [Theme Docs](http://themes.ghost.org)
-- [Contributing Guide](https://github.com/TryGhost/Ghost/blob/master/.github/CONTRIBUTING.md)
-- [Feature Requests](http://ideas.ghost.org/)
-- [Dev Blog](http://dev.ghost.org)
+After logging in, you will need to provide **App Name**
+Recommended Region is **IBM Bluemix US South**
+Then simply press **Deploy** button
 
-**NOTE: If you’re stuck, can’t get something working or need some help, please head on over and join our [Slack community](https://ghost.org/slack/) rather than opening an issue.**
+![](https://c4fb4c2f-54ba-49b6-b4ed-acb141ced43e-bluemix.cloudant.com/ghost-ghost-images/img2/content/images/2016/05/img2.PNG)
 
+After waiting for about 10 minutes, the deployment will fail. This is expected because we have not set up our database.
+Ghost normally runs on sqlite3 by default, but I have configured it to use MySQL instead. This was done through changing config.js file. The reason why we are using MySQL is because **any local files saved on Cloud Foundry Apps are not persistent** and files will be wiped clean once the app is redeployed.
 
-# Quick Start Install
+Next, click on **APP DASHBOARD** button.
+![](https://c4fb4c2f-54ba-49b6-b4ed-acb141ced43e-bluemix.cloudant.com/ghost-ghost-images/img3/content/images/2016/05/img3.PNG)
+Then on the right side of the screen, click on **USE SERVICES OR APIS** button.
 
-Make sure you've installed Node.js - We recommend the latest **Node v0.10.x** release. For other versions [click here](http://support.ghost.org/supported-node-versions/). May contain nuts.
+![](https://c4fb4c2f-54ba-49b6-b4ed-acb141ced43e-bluemix.cloudant.com/ghost-ghost-images/img4/content/images/2016/05/img4.PNG)
+Then go all the way to the bottom and click on **Bluemix Labs Catalog**
+![](https://c4fb4c2f-54ba-49b6-b4ed-acb141ced43e-bluemix.cloudant.com/ghost-ghost-images/img5/content/images/2016/05/img5.PNG)
+In **Data and Analytics** section, click on **mysql experimental**
+![](https://c4fb4c2f-54ba-49b6-b4ed-acb141ced43e-bluemix.cloudant.com/ghost-ghost-images/img6/content/images/2016/05/img6.PNG)
+Here, ensure you select your ghost application in `App:` dropdown
 
-1. Download the [latest release](https://ghost.org/developers/) of Ghost
-1. Unzip in the location you want to install
-1. Fire up a terminal
-1. `npm install --production`
-1. Start Ghost!
-    - Local environment: `npm start`
-    - On a server: `npm start --production`
-1. `http://localhost:2368/ghost` :tada:
+Then press **CREATE** button
+![](https://c4fb4c2f-54ba-49b6-b4ed-acb141ced43e-bluemix.cloudant.com/ghost-ghost-images/img7/content/images/2016/05/img7.PNG)
+Once created, you will see a popup window **Restage Application**. Press cancel as you still need to add one more service.
 
-More [install docs](http://support.ghost.org/installation/) here in case you got stuck.
+You will need to add one more Service called **Cloudant NoSQL DB**.
+This is required in order to save images (MySQL does not hold images).
+Note: Cloudant NoSQL DB has space of 20GB for free-tier. 
 
-<a name="getting-started"></a>
-# Developer Install (from git)
+![](https://c4fb4c2f-54ba-49b6-b4ed-acb141ced43e-bluemix.cloudant.com/ghost-ghost-images/img12/content/images/2016/05/img12.PNG)
+Again, ensure you select your ghost application in `App:` dropdown
+![](https://c4fb4c2f-54ba-49b6-b4ed-acb141ced43e-bluemix.cloudant.com/ghost-ghost-images/img13/content/images/2016/05/img13.PNG)
 
-Install Node.js. (See [Supported Node.js versions](http://support.ghost.org/supported-node-versions/))
+Once created, you will see a popup window **Restage Application**.
+Go ahead and press **Restage** Button.
 
-```bash
-# Node v0.10.x - recommended
-# Node v0.12.x and v4.2+ LTS - supported
-#
-# Choose wisely
-```
+###That's it!
 
-Clone :ghost:
+Simply go to your nodejs web application link, and go to
+`https://<YourBluemixAppName>.mybluemix.net/ghost/`  to set your admin account.
 
-```bash
-git clone git://github.com/tryghost/ghost.git
-cd ghost
-```
-
-Install grunt. No prizes here.
-
-```bash
-npm install -g grunt-cli
-```
-
-Install Ghost. If you're running locally, use [master](https://github.com/TryGhost/Ghost/tree/master). For production, use [stable](https://github.com/TryGhost/Ghost/tree/stable). :no_entry_sign::rocket::microscope:
-
-```bash
-npm install
-```
-
-Build the things!
-
-```bash
-grunt init
-```
-
-Minify that shit for production?
-
-```bash
-grunt prod
-```
-
-Start your engines.
-
-```bash
-npm start
-
-## running production? Add --production
-```
-
-Congrats! You made it. BTW you can also just `npm install ghost` if you're into that sort of thing. NPM aficionados can also read up on using [Ghost as an NPM module](https://github.com/TryGhost/Ghost/wiki/Using-Ghost-as-an-npm-module).
-
-More general [install docs](http://support.ghost.org/installation/) here in case you got stuck.
-
-
-# Deploying Ghost
-
-![Ghost(Pro) + DigitalOcean](https://cloud.githubusercontent.com/assets/120485/8180331/d6674e32-1414-11e5-8ce4-2250e9994906.png)
-
-Save yourself time and headaches with our fully managed **[Ghost(Pro)](https://ghost.org/pricing/)** service. Deploy a new instance of Ghost in a couple of clicks running on [DigitalOcean](https://digitalocean.com)’s rock solid infrastructure, with a worldwide CDN thrown in at no extra charge.
-
-All revenue from **Ghost(Pro)** goes to the Ghost Foundation, the non-profit org which funds the maintenance and further development of Ghost.
-
-[Other options](http://support.ghost.org/deploying-ghost/) are also available if you prefer playing around with servers by yourself.
-
-
-# Staying Up to Date
-
-When a new version of Ghost comes out, you'll want to look over these [upgrade instructions](http://support.ghost.org/how-to-upgrade/) for what to do next.
-
-You can talk to other Ghost users and developers in our [public Slack team](https://ghost.org/slack/) (it's pretty awesome). We have a public meeting every Tuesday at 5:30pm UK time.
-
-New releases are announced on the [dev blog](http://dev.ghost.org/tag/releases/). You can subscribe by email or follow [@TryGhost_Dev](https://twitter.com/tryghost_dev) on Twitter, if you prefer your updates bite-sized and facetious.
-
-:saxophone::turtle:
-
-
-# Copyright & License
-
-Copyright (c) 2013-2016 Ghost Foundation - Released under the [MIT license](LICENSE).
+######Thanks and I hope it helped!
+Check out my blog at https://ghost.mybluemix.net/
