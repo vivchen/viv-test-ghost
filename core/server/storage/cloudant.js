@@ -21,6 +21,7 @@ var _       = require('lodash'),
 if (process.env.VCAP_APPLICATION) {
     var appdetails = JSON.parse(process.env.VCAP_APPLICATION);
     dbname = appdetails.name + '-ghost-images';
+    dbname = dbname.toLowerCase();
 }
 
 if (process.env.VCAP_SERVICES) {
