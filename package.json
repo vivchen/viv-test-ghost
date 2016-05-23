@@ -9,7 +9,6 @@
     "blog",
     "cms"
   ],
-  "cacheDirectories": ["bower_components"],
   "repository": {},
   "bugs": "https://github.com/TryGhost/Ghost/issues",
   "contributors": "https://github.com/TryGhost/Ghost/graphs/contributors",

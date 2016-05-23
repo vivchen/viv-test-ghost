@@ -264,7 +264,8 @@ CloudantFileStore.prototype.serve = function () {
         ONE_YEAR_MS = 365 * 24 * ONE_HOUR_MS;
 
     // For some reason send divides the max age number by 1000
-    return express.static(config.get().paths.imagesPath, {maxAge: ONE_YEAR_MS});
+    // Fallthrough: false ensures that if an image isn't found, it automatically 404s
+    return express.static(config.get().paths.imagesPath, {maxAge: ONE_YEAR_MS, fallthrough: false});
 }
 
 module.exports = CloudantFileStore;

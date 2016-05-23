@@ -43,7 +43,7 @@ upload = {
 
         return store.save(options).finally(function () {
             // Remove uploaded file from tmp location
-            return pUnlink(options.path);
+            return true;
         });
     })
 };
