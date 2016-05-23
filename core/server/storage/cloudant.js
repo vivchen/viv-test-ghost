@@ -144,8 +144,8 @@ CloudantFileStore.prototype.save = function (image) {
         }
 
         var base = path.basename(targetFilename, extension);
-        //console.log(cloudantCreds.url + '/' + dbname + '/' + base + fullUrl);
-        var cloudantImageUrl = cloudantCreds.url + '/' + dbname + '/' + base + fullUrl;
+        // console.log('https://' + cloudantCreds.host + '/' + dbname + '/' + base + fullUrl);
+        var cloudantImageUrl = 'https://' + cloudantCreds.host + '/' + dbname + '/' + base + fullUrl;
 
         //Let's try to find a document with the same label as the image and then drill down to find the image attachment
         imagestore.get(base, {revs_info: true}, function(err, getBody) {
