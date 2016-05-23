@@ -8,7 +8,14 @@ var cfenv = require('cfenv');
 var appEnv = cfenv.getAppEnv();
 var path = require('path'),
     config;
-var mySqlConfig = JSON.parse(process.env.VCAP_SERVICES)[process.env.MYSQL_VERSION || "mysql-5.5"][0].credentials;
+var mySqlConfig;
+var services = JSON.parse(process.env.VCAP_SERVICES);
+for (var svcName in services) {
+    if (svcName.match(/^mysql/)) {
+        mySqlConfig = services[svcName][0].credentials;
+    }
+}
+
 config = {
     // ### Production
     // When running Ghost in the wild, use the production environment.
