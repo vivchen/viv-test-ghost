@@ -6,7 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "ghost": "^0.7.9",
+    "ghost": "https://github.com/bosung90/Ghost.git",
     "cfenv": "1.0.x"
   },
   "repository": {},

@@ -45,7 +45,7 @@ config = {
             host: '0.0.0.0',
             port: appEnv.port
         },
-        fileStorage: false
+        fileStorage: true
     },
 
     // ### Development **(default)**
