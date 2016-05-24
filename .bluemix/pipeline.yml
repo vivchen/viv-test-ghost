@@ -27,10 +27,7 @@ stages:
   - name: Deploy to dev
     type: deployer
     target:
-      region_id: 
-      organization: 
-      space: 
-      application: 
+      application: ghost
     script: |-
       #!/bin/bash
       cf push "${CF_APP}"
