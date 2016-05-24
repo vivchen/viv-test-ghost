@@ -27,7 +27,10 @@ stages:
   - name: Deploy to dev
     type: deployer
     target:
-      application: ghost
+      region_id: ibm:yp:us-south
+      organization: ${CF_ORG}
+      space: ${CF_SPACE}
+      application: ${CF_APP}
     script: |-
       #!/bin/bash
       cf push "${CF_APP}"
