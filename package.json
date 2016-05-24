@@ -15,7 +15,7 @@
   "license": "MIT",
   "main": "./core/index",
   "scripts": {
-    "preinstall": "export PATH=/opt/IBM/node-v4.2/bin:$PATH & npm install semver",
+    "preinstall": "export PATH=/opt/IBM/node-v4.2/bin:$PATH && npm install semver",
     "start": "node index",
     "test": "grunt validate --verbose"
   },
