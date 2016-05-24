@@ -6,17 +6,13 @@ declared-services:
     label: mysql
     plan: '100'
 applications:
-- services:
-  - cloudantNoSQLDB
-  - mysql
-  name: Ghost-cdekok
-  path: .
+- path: .
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  host: ghost-cdekok
+  name: Ghost
+  host: ghost
   disk_quota: 1024M
   services:
     - ghost-image-db
     - ghost-mysql-db #Identifier for MySQL Bound Service instance
-​
