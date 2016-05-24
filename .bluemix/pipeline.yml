@@ -16,24 +16,3 @@ stages:
       export PATH=/opt/IBM/node-v4.2/bin:$PATH
       npm install
       grunt --force
-- name: Deploy Stage
-  inputs:
-  - type: job
-    stage: Build Stage
-    job: Build
-  triggers:
-  - type: stage
-  jobs:
-  - name: Deploy to dev
-    type: deployer
-    target:
-      region_id: ibm:yp:us-south
-      organization: test@example.com
-      space: somespace
-      application: randomapp
-    script: |-
-      #!/bin/bash
-      cf push "${CF_APP}"
-
-      # View logs
-      #cf logs "${CF_APP}" --recent
