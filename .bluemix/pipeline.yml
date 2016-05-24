@@ -26,6 +26,11 @@ stages:
   jobs:
   - name: Deploy to dev
     type: deployer
+    target:
+      region_id: ibm:yp:us-south
+      organization: bosung90@gmail.com
+      space: dev
+      application: ghost-bluemix-deploy-bosung-354
     script: |-
       #!/bin/bash
       cf push "${CF_APP}"
