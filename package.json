@@ -15,12 +15,12 @@
   "license": "MIT",
   "main": "./core/index",
   "scripts": {
-    "preinstall": "export PATH=/opt/IBM/node-v4.2/bin:$PATH && npm install semver",
+    "preinstall": "npm install semver && node -e \"require('./core/server/utils/startup-check.js').nodeVersion()\"",
     "start": "node index",
     "test": "grunt validate --verbose"
   },
   "engines": {
-    "node": "~0.10.0 || ~0.12.0 || ^4.2.0"
+    "node": "^4.2.0"
   },
   "dependencies": {
     "bcryptjs": "2.3.0",
