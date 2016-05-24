@@ -28,9 +28,9 @@ stages:
     type: deployer
     target:
       region_id: ibm:yp:us-south
-      organization: $CF_ORG
-      space: $CF_SPACE
-      application: $CF_APP
+      organization: test@example.com
+      space: somespace
+      application: randomapp
     script: |-
       #!/bin/bash
       cf push "${CF_APP}"
