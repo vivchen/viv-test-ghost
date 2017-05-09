@@ -10,8 +10,8 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: Ghost-bluemix-deploy
-  host: ghost-bluemix-deploy
+  name: viv-test-ghost
+  host: viv-test-ghost
   disk_quota: 1024M
   services:
     - ghost-image-db
