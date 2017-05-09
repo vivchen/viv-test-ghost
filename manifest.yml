@@ -1,4 +1,7 @@
 declared-services:
+  ghost-image-db:
+    label: cloudantNoSQLDB
+    plan: Lite
   ghost-mysql-db:
     label: mysql
     plan: '100'
@@ -7,8 +10,9 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: viv-test-ghost
-  host: viv-test-ghost
+  name: test-ghost
+  host: test-ghost
   disk_quota: 1024M
   services:
+    - ghost-image-db
     - ghost-mysql-db #Identifier for MySQL Bound Service instance
