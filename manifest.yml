@@ -1,7 +1,4 @@
 declared-services:
-  ghost-image-db:
-    label: cloudantNoSQLDB
-    plan: Shared
   ghost-mysql-db:
     label: mysql
     plan: '100'
@@ -14,5 +11,4 @@ applications:
   host: viv-test-ghost
   disk_quota: 1024M
   services:
-    - ghost-image-db
     - ghost-mysql-db #Identifier for MySQL Bound Service instance
