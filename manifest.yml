@@ -14,5 +14,4 @@ applications:
   host: viv-test-ghost
   disk_quota: 1024M
   services:
-    - ghost-image-db
     - ghost-mysql-db #Identifier for MySQL Bound Service instance
